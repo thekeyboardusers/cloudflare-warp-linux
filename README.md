@@ -109,10 +109,6 @@ Email: glitchbey@proton.me
 
 ---
 
-## 🧾 License
-
-MIT License — free to use, modify, and distribute.
-
 ---
 
 ## ✨ Credits
