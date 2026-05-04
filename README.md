@@ -2,15 +2,7 @@
 
 ## 📌 Overview
 
-Cloudflare WARP allows you to securely route all server traffic through an encrypted tunnel.
-
-However, enabling WARP while connected via SSH can instantly drop your active session.
-
-This repository provides a clean and safe solution:
-
-- ✔ Install Cloudflare WARP on Linux servers  
-- ✔ Properly configure the client  
-- ✔ Prevent SSH disconnect using IP exclusion  
+By installing Cloudflare WARP on our Linux server, we can route all traffic through the secure WARP tunnel. However, when you enable WARP while connected via SSH, the connection may drop. Preventing this is simple: exclude your own IP from the tunnel.
 
 ---
 
@@ -26,37 +18,17 @@ This repository provides a clean and safe solution:
 ### 1️⃣ Add Cloudflare GPG key and repository
 
 ```bash
-curl -fsSL https://pkg.cloudflareclient.com/pubkey.gpg \
-| sudo gpg --yes --dearmor \
---output /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg
-```
-
-```bash
-echo "deb [signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://pkg.cloudflareclient.com/ $(lsb_release -cs) main" \
-| sudo tee /etc/apt/sources.list.d/cloudflare-client.list
-```
-
----
-
-### 2️⃣ Install WARP client
-
-```bash
-sudo apt-get update
-sudo apt-get install cloudflare-warp -y
-```
-
----
-
-### 3️⃣ Register and configure
-
-```bash
-warp-cli registration new
+curl -fsSL https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor --output /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg &&
+echo "deb [signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://pkg.cloudflareclient.com/ $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/cloudflare-client.list &&
+sudo apt-get update && sudo apt-get install cloudflare-warp -y &&
+warp-cli registration new &&
 warp-cli mode warp+doh
+      
 ```
 
 ---
 
-## 🛡️ Prevent SSH Disconnect (IMPORTANT)
+## 2️⃣ Prevent SSH Disconnect (IMPORTANT)
 
 Before enabling WARP, exclude your current access IP:
 
@@ -72,7 +44,7 @@ YOUR_HOME_IP_ADDRESS → your actual public IP address
 
 ---
 
-## 🔌 Connect WARP
+## 2️⃣ Connect WARP
 
 ```bash
 warp-cli connect
@@ -109,7 +81,6 @@ Email: glitchbey@proton.me
 
 ---
 
----
 
 ## ✨ Credits
 
