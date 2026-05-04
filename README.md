@@ -1,4 +1,4 @@
-# 📡 Cloudflare WARP SSH Safe Setup (TKU)
+# 📡 Cloudflare WARP SSH Safe Setup
 
 ## 📌 Overview
 
