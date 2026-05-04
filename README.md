@@ -44,7 +44,7 @@ YOUR_HOME_IP_ADDRESS → your actual public IP address
 
 ---
 
-## 2️⃣ Connect WARP
+## 3️⃣ Connect WARP
 
 ```bash
 warp-cli connect
